@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ersanjeev/devops-challanges
+  name: ersanjeev-devops-challanges
   namespace: argocd
 spec:
   project: default
