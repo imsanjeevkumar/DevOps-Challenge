@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/imsanjeevkumar/gitops.git
+    repoURL: https://github.com/imsanjeevkumar/DevOps-Challenge.git
     targetRevision: HEAD  
-    path: devops-challanges
+    path: k8s-manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: devops-challanges
