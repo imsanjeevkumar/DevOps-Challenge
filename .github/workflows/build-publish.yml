@@ -64,10 +64,8 @@ jobs:
     # SSH to AWS server and apply Kubernetes manifests
       - name: Deploy to Minikube
         run: |
-          ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }} << EOF
-          sudo -i 
-          cd /root/DevOps-Challenge/k8s-manifests
-          kubectl apply -f .
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }} << EOF
+          sudo kubectl apply -f /root/DevOps-Challenge/k8s-manifests
           EOF
 
 
