@@ -74,12 +74,12 @@ jobs:
 
       - name: Deploy to Minikube
         run: |
-        ssh -T -i /tmp/ssh_key "${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }}" << 'EOF'
-        sudo bash -c "
-        cd /root/DevOps-Challenge/k8s-manifests
-        kubectl apply -f .
-        "
-        EOF
+          ssh -T -i /tmp/ssh_key "${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }}" << 'EOF'
+          sudo bash -c "
+          cd /root/DevOps-Challenge/k8s-manifests
+          kubectl apply -f .
+          "
+          EOF
 
 
 
