@@ -62,18 +62,24 @@ jobs:
       #     docker save  ${{ env.DOCKER_REPO }}:${{ github.sha }} | bzip2 | ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }} "bunzip2 | docker load"
 
     # SSH to AWS server and apply Kubernetes manifests
-      - name: Deploy to Minikube
+      - name: Create SSH key file
         run: |
-          # Create the SSH key file
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/ssh_key
           chmod 600 /tmp/ssh_key
 
-          # Execute the SSH command
-          ssh -T -i /tmp/ssh_key "${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }}" << 'EOF'
-          sudo bash -c "
-          cd /root/DevOps-Challenge/k8s-manifests
-          kubectl apply -f .
-          "
-          EOF
+      - name: Debug Secrets
+        run: |
+          echo "AWS_SERVER=${{ secrets.AWS_SERVER }}" # Ensure this value is not empty
+          echo "AWS_USER=${{ secrets.AWS_USER }}"    # Ensure this value is correct
+
+      - name: Deploy to Minikube
+        run: |
+        ssh -T -i /tmp/ssh_key "${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }}" << 'EOF'
+        sudo bash -c "
+        cd /root/DevOps-Challenge/k8s-manifests
+        kubectl apply -f .
+        "
+        EOF
+
 
 
