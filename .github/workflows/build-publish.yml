@@ -56,16 +56,7 @@ jobs:
             ${{ env.DOCKER_REPO }}:${{ steps.infer-tag.outputs.tag }},
             ${{ env.DOCKER_REPO }}:${{ github.sha }}
 
-          # Copy Docker image to AWS server
-      # - name: Copy Docker image to remote server
-      #   run: |
-      #     docker save  ${{ env.DOCKER_REPO }}:${{ github.sha }} | bzip2 | ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.AWS_USER }}@${{ secrets.AWS_SERVER }} "bunzip2 | docker load"
-
-    # SSH to AWS server and apply Kubernetes manifests
-      - name: Deploy Kubernetes manifests
-        run: |
-          kubectl apply -f ./k8s-manifests
-          
+   
 
 
 
