@@ -67,7 +67,7 @@ jobs:
       - name: update kube config
         run: aws eks update-kubeconfig --region eu-central-1 --name eksdemo
 
-      - name: Deploz to EKS
+      - name: Deploy to EKS
         run: |
           kubectl apply -f ./k8s-manifests/application-deployment.yml 
 
