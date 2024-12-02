@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo-container
-          image: ersanjeev/app2:latest  # Replace with  Docker image
+          image: ersanjeev/testapp02122024  # Replace with  Docker image
           ports:
             - containerPort: 8000  # application will run on port 8000 inside container 
           envFrom:
