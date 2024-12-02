@@ -56,6 +56,13 @@ jobs:
             ${{ env.DOCKER_REPO }}:${{ steps.infer-tag.outputs.tag }},
             ${{ env.DOCKER_REPO }}:${{ github.sha }}
 
+      - name: update kube config
+        run: aws eks update-kubeconfig --region eu-central-1 --name eksdemo
+
+      - name: Deploz to EKS
+        run: |
+          kubectl apply -f ./k8-manifests/application-deployment.yml 
+
    
 
 
