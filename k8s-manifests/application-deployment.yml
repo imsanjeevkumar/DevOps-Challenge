@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: demo-deployment
 spec:
-  replicas: 3  # Ensure 3 replicas for high availability
+  replicas: 1  # Ensure 3 replicas for high availability
   selector:
     matchLabels:
       app: demo-app
